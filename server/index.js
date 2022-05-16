@@ -9,6 +9,7 @@ const path = require("path");
 
 const passport = require("./config/passport");
 const oauthRoutes = require("./routes/oauth");
+const apiRoutes = require("./routes/post");
 
 dotenv.config({ path: "./config/.env" });
 
@@ -44,6 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* set routes */
+app.use("/api/v1/post", apiRoutes);
 app.use("/oauth/google", oauthRoutes);
 
 /* set connection with mongo */

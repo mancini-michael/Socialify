@@ -66,6 +66,11 @@ services:
     networks:
       - app-network
 
+  rabbit:
+    image: rabbitmq
+    networks:
+      - app-network
+
     
 networks:
   app-network:
