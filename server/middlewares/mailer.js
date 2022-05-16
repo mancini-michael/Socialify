@@ -12,8 +12,8 @@ module.exports = {
       secure: true,
       auth: {
         type: "OAuth2",
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
       },
     });
 
