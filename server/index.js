@@ -7,6 +7,9 @@ const session = require("express-session");
 const mongoose = require("mongoose");
 const path = require("path");
 
+const passport = require("./config/passport");
+const oauthRoutes = require("./routes/oauth");
+
 dotenv.config({ path: "./config/.env" });
 
 const INSTANCE = process.env.INSTANCE || "";
@@ -35,6 +38,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session(SESSION_OPTIONS));
+
+/* initialize passport */
+app.use(passport.initialize());
+app.use(passport.session());
+
+/* set routes */
+app.use("/oauth/google", oauthRoutes);
 
 /* set connection with mongo */
 mongoose
