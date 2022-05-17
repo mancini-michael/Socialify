@@ -16,6 +16,7 @@ passport.use(
     },
     async (req, accessToken, refreshToken, profile, done) => {
       req.session.accessToken = accessToken;
+      req.session.refreshToken = refreshToken;
       const loggedUser = {
         googleId: profile.id,
         givenName: profile.name.givenName,
