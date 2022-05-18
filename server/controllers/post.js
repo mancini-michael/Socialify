@@ -1,6 +1,6 @@
 const amqp = require("amqplib/callback_api");
 const dotenv = require("dotenv");
-const { google } = require('googleapis')
+const { google } = require("googleapis")
 
 const Post = require("../models/Post");
 const User = require("../models/User");
@@ -97,11 +97,11 @@ module.exports = {
     });
 
     oAuth2Client = {
-      
+
     }
 
     // Create a new calender instance.
-    const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
+    const calendar = google.calendar({ version: 'v3' })
 
     // Create a new event start date instance for temp uses in our calendar.
     const eventStartTime = new Date()
