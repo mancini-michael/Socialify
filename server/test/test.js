@@ -66,27 +66,44 @@ describe("GET /api/v1/post/62824d0a048c24cb61b39049", () => {
 describe("DELETE /api/v1/post/", () => {
   it("send DELETE request to http://localhost:8080/api/v1/post", async () => {
     await fetch("http://localhost:8080/api/v1/post", {
-      method: "DELETE"
+      method: "DELETE",
     })
-    .then((result) => {
-      expect(result.status).to.equal(200);
-    })
-    .catch((err) => {
-      console.error(err.message);
-    });
+      .then((result) => {
+        expect(result.status).to.equal(200);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
   });
 });
 
 describe("DELETE /api/v1/post/:id", () => {
   it("send DELETE request to http://localhost:8080/api/v1/post/:id", async () => {
     await fetch("http://localhost:8080/api/v1/post/:id", {
-      method: "DELETE"
+      method: "DELETE",
     })
-    .then((result) => {
-      expect(result.status).to.equal(200);
-    })
-    .catch((err) => {
-      console.error(err.message);
-    });
+      .then((result) => {
+        expect(result.status).to.equal(200);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+  });
+});
+
+describe("DELETE /api/v1/post/:id/62824d0a048c24cb61b39049", () => {
+  it("send DELETE request to http://localhost:8080/api/v1/post/:id/62824d0a048c24cb61b39049", async () => {
+    await fetch(
+      "http://localhost:8080/api/v1/post/:id/62824d0a048c24cb61b39049",
+      {
+        method: "DELETE",
+      }
+    )
+      .then((result) => {
+        expect(result.status).to.equal(200);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
   });
 });
