@@ -107,3 +107,21 @@ describe("DELETE /api/v1/post/:id/62824d0a048c24cb61b39049", () => {
       });
   });
 });
+
+describe("PATCH /api/v1/post/:id/62824d0a048c24cb61b39049", () => {
+  it("send PATCH request to http://localhost:8080/api/v1/post/:id/62824d0a048c24cb61b39049", async () => {
+    await fetch("http://localhost:8080/api/v1/post/:id/62824d0a048c24cb61b39049", {
+      method: "POST",
+      body: JSON.stringify({
+        description: "exampleUpdated",
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((result) => {
+        expect(result.status).to.equal(200);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+  });
+});
