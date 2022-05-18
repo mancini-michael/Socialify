@@ -41,7 +41,6 @@ footer .container-md span {
 }
 
 .col-lg-4 .picture {
-  background-image: url("../img/profile.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -49,23 +48,21 @@ footer .container-md span {
   height: 100px;
 }
 
-.col-lg-4 .picture2 {
+.col-lg-4:nth-child(1) .picture {
+  background-image: url("../img/profile.jpg");
+}
+
+.col-lg-4:nth-child(2) .picture {
   background-image: url("../img/profile2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100px;
-  height: 100px;
+}
+
+.col-lg-4:nth-child(3) .picture {
+  background-image: url("../img/profile2.jpg");
 }
 
 .col-lg-4 .picture:hover {
   transform: scale(1.05);
 }
-
-.col-lg-4 .picture2:hover {
-  transform: scale(1.05);
-}
-
 
 main {
   min-height: 100%;
