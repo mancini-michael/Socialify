@@ -6,6 +6,10 @@ const schema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    displayName: {
+      type: String,
+      required: true,
+    },
     description: {
       type: String,
       required: true,

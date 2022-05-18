@@ -39,9 +39,11 @@ module.exports = {
    */
   createPost: async (req, res) => {
     const { author, description, picture } = req.body;
+    const displayName = `${req.session.passport.user.givenName} ${req.session.passport.user.familyName}`;
 
     const createdPost = {
       author,
+      displayName,
       description,
       picture,
     };
@@ -95,8 +97,6 @@ module.exports = {
         });
       });
     });
-
-    /* oAuth2Client = {}; */
 
     // Create a new calender instance.
     const calendar = google.calendar({

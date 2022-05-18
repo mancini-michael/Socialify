@@ -63,10 +63,10 @@
         <div class="container-md">
           <div class="row mx-auto">
             <% post.forEach((p) => { %>
-            <div class="col-lg-3 mx-auto p-2">
+            <div class="col-lg-3 m-auto p-2">
               <div class="container-md shadow p-3 mb-2">
-                <h5 class="fw-bolder m-0"><%- p.author %></h5>
-                <span><%- p.description %></span>
+                <h5 class="fw-bolder m-0"><%- p.displayName %></h5>
+                <span class="text-break"><%- p.description %></span>
               </div>
             </div>
             <% }); %>
