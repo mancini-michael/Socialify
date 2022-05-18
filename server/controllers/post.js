@@ -231,7 +231,6 @@ module.exports = {
    *
    */
   deleteAllPost: async (req, res) => {
-    const { author, description, picture } = req.body;
     const post = await Post.remove({}).catch((err) => {
       console.error(err.message);
       res.sendStatus(404);
