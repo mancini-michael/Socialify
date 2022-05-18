@@ -7,6 +7,7 @@ $(document).ready(() => {
     event.preventDefault();
 
     const author = $("#author").val();
+    const displayName = $("#user").html() || "user";
     const description = $("#description").val();
     const photo = $("#photo").val();
 
@@ -17,7 +18,7 @@ $(document).ready(() => {
       return;
     }
 
-    const post = { author, description, photo };
+    const post = { author, displayName, description, photo };
 
     $.ajax({
       url: "http://localhost:8080/api/v1/post",

@@ -24,7 +24,7 @@ describe("POST /api/v1/post", () => {
     await fetch("http://localhost:8080/api/v1/post", {
       method: "POST",
       body: JSON.stringify({
-        author: "62824d0a048c24cb61b39049",
+        author: "62854a7d2a2486b3702e0143",
         description: "example",
         picture: "picture",
       }),
@@ -51,9 +51,28 @@ describe("GET /api/v1/post", () => {
   });
 });
 
-describe("GET /api/v1/post/62824d0a048c24cb61b39049", () => {
-  it("send GET request to http://localhost:8080/api/v1/post/62824d0a048c24cb61b39049", async () => {
-    await fetch("http://localhost:8080/api/v1/post/62824d0a048c24cb61b39049")
+describe("GET /api/v1/post/62854a7d2a2486b3702e0143", () => {
+  it("send GET request to http://localhost:8080/api/v1/post/62854a7d2a2486b3702e0143", async () => {
+    await fetch("http://localhost:8080/api/v1/post/62854a7d2a2486b3702e0143")
+      .then((result) => {
+        expect(result.status).to.equal(200);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+  });
+});
+
+describe("PATCH /api/v1/post/62854a7d2a2486b3702e0143", () => {
+  it("send PATCH request to http://localhost:8080/api/v1/post/62854a7d2a2486b3702e0143", async () => {
+    await fetch("http://localhost:8080/api/v1/post/62854a7d2a2486b3702e0143", {
+      method: "POST",
+      body: JSON.stringify({
+        author: "62854a7d2a2486b3702e0143",
+        description: "exampleUpdated",
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
       .then((result) => {
         expect(result.status).to.equal(200);
       })
@@ -77,45 +96,10 @@ describe("DELETE /api/v1/post/", () => {
   });
 });
 
-describe("DELETE /api/v1/post/:id", () => {
-  it("send DELETE request to http://localhost:8080/api/v1/post/:id", async () => {
-    await fetch("http://localhost:8080/api/v1/post/:id", {
+describe("DELETE /api/v1/post/62854a7d2a2486b3702e0143", () => {
+  it("send DELETE request to http://localhost:8080/api/v1/post/62854a7d2a2486b3702e0143", async () => {
+    await fetch("http://localhost:8080/api/v1/post/62854a7d2a2486b3702e0143", {
       method: "DELETE",
-    })
-      .then((result) => {
-        expect(result.status).to.equal(200);
-      })
-      .catch((err) => {
-        console.error(err.message);
-      });
-  });
-});
-
-describe("DELETE /api/v1/post/:id/62824d0a048c24cb61b39049", () => {
-  it("send DELETE request to http://localhost:8080/api/v1/post/:id/62824d0a048c24cb61b39049", async () => {
-    await fetch(
-      "http://localhost:8080/api/v1/post/:id/62824d0a048c24cb61b39049",
-      {
-        method: "DELETE",
-      }
-    )
-      .then((result) => {
-        expect(result.status).to.equal(200);
-      })
-      .catch((err) => {
-        console.error(err.message);
-      });
-  });
-});
-
-describe("PATCH /api/v1/post/:id/62824d0a048c24cb61b39049", () => {
-  it("send PATCH request to http://localhost:8080/api/v1/post/:id/62824d0a048c24cb61b39049", async () => {
-    await fetch("http://localhost:8080/api/v1/post/:id/62824d0a048c24cb61b39049", {
-      method: "POST",
-      body: JSON.stringify({
-        description: "exampleUpdated",
-      }),
-      headers: { "Content-Type": "application/json" },
     })
       .then((result) => {
         expect(result.status).to.equal(200);

@@ -1,10 +1,6 @@
 const amqp = require("amqplib/callback_api");
 const dotenv = require("dotenv");
-<<<<<<< HEAD
 const { google } = require("googleapis");
-=======
-const { google } = require("googleapis")
->>>>>>> 1db7b4f1c5e1865744764f8ac683c6005ee8527e
 
 const Post = require("../models/Post");
 const User = require("../models/User");
@@ -42,8 +38,7 @@ module.exports = {
    *
    */
   createPost: async (req, res) => {
-    const { author, description, picture } = req.body;
-    const displayName = `${req.session.passport.user.givenName} ${req.session.passport.user.familyName}`;
+    const { author, displayName, description, picture } = req.body;
 
     const createdPost = {
       author,
@@ -102,20 +97,11 @@ module.exports = {
       });
     });
 
-<<<<<<< HEAD
     // Create a new calender instance.
     const calendar = google.calendar({
       version: "v3",
       access_token: req.session.accessToken,
     });
-=======
-    oAuth2Client = {
-
-    }
-
-    // Create a new calender instance.
-    const calendar = google.calendar({ version: 'v3' })
->>>>>>> 1db7b4f1c5e1865744764f8ac683c6005ee8527e
 
     // Create a new event start date instance for temp uses in our calendar.
     const eventStartTime = new Date();
@@ -285,22 +271,24 @@ module.exports = {
    *
    */
   updatePostById: async (req, res) => {
-
-    const { author, description, picture } = req.body;
+    const { author, displayName, description, picture } = req.body;
 
     const updatedPost = {
       author,
+      displayName,
       description,
       picture,
     };
 
-    const {id} = req.parms;
+    const { id } = req.params;
 
-    const post = await Post.findOneAndUpdate({_id: id},{$set:{description:updatedPost.description}}).catch((err) => {
-      console.error(err.message);
-      res.sendStatus(500);
-      return;
-    });
+    const post = await Post.findOneAndUpdate({ _id: id }, updatedPost).catch(
+      (err) => {
+        console.error(err.message);
+        res.sendStatus(500);
+        return;
+      }
+    );
     if (!post) {
       res.status(404).json({ error: "Post Not Found" });
       return;
@@ -368,7 +356,6 @@ module.exports = {
    *
    */
   deletePostById: async (req, res) => {
-
     const { author, description, picture } = req.body;
 
     const deletedPost = {
@@ -377,9 +364,12 @@ module.exports = {
       picture,
     };
 
-    const {id} = req.parms;
+    const { id } = req.params;
 
-    const post = await Post.remove({_id: id, author: deletedPost.author}).catch((err) => {
+    const post = await Post.remove({
+      _id: id,
+      author: deletedPost.author,
+    }).catch((err) => {
       console.error(err.message);
       res.sendStatus(500);
       return;
