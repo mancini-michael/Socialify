@@ -48,6 +48,11 @@ app.use(passport.session());
 app.use("/api/v1/post", apiRoutes);
 app.use("/oauth/google", oauthRoutes);
 
+/* get root path */
+app.get("/", (req, res) => {
+  res.render("index", { title: "Socialify" });
+});
+
 /* set connection with mongo */
 mongoose
   .connect(MONGO_URI)

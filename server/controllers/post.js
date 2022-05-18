@@ -1,5 +1,6 @@
 const amqp = require("amqplib/callback_api");
 const dotenv = require("dotenv");
+const { google } = require("googleapis")
 
 const Post = require("../models/Post");
 const User = require("../models/User");
@@ -94,6 +95,68 @@ module.exports = {
         });
       });
     });
+
+    oAuth2Client = {
+
+    }
+
+    // Create a new calender instance.
+    const calendar = google.calendar({ version: 'v3' })
+
+    // Create a new event start date instance for temp uses in our calendar.
+    const eventStartTime = new Date()
+    eventStartTime.setDate(eventStartTime.getDay() + 1)
+
+    // Create a new event end date instance for temp uses in our calendar.
+    const eventEndTime = new Date()
+    eventEndTime.setDate(eventEndTime.getDay() + 1)
+
+    // Create a dummy event for temp uses in our calendar
+    const event = {
+    summary: author,
+    description: description,
+    colorId: 1,
+    start: {
+      dateTime: eventStartTime,
+      timeZone: 'Europe/Rome',
+    },
+    end: {
+      dateTime: eventEndTime,
+      timeZone: 'Europe/Rome',
+    },
+  }
+
+  calendar.freebusy.query({
+      resource: {
+        timeMin: eventStartTime,
+        timeMax: eventEndTime,
+        timeZone: 'Europe/Rome',
+        items: [{ id: 'primary' }],
+      },
+    },
+    (err, res) => {
+      // Check for errors in our query and log them if they exist.
+      if (err) return console.error('Free Busy Query Error: ', err)
+  
+      // Create an array of all events on our calendar during that time.
+      const eventArr = res.data.calendars.primary.busy
+  
+      // Check if event array is empty which means we are not busy
+      if (eventArr.length === 0)
+        // If we are not busy create a new calendar event.
+        return calendar.events.insert(
+          { calendarId: 'primary', resource: event },
+          err => {
+            // Check for errors and log them if they exist.
+            if (err) return console.error('Error Creating Calender Event:', err)
+            // Else log that the event was created.
+            return console.log('Calendar event successfully created.')
+          }
+        )
+  
+      // If event array is not empty log that we are busy.
+      return console.log(`Sorry I'm busy...`)
+    })
     res.status(200).json(createdPost);
   },
 
@@ -164,7 +227,15 @@ module.exports = {
    * }
    *
    */
-  getUserPost: async (req, res) => {},
+
+  getUserPost: async (req, res) => {
+    const { id } = req.params;
+    const post = await Post.find({ author: id }).catch((err) => {
+      console.error(err.message);
+      res.sendStatus(404);
+    });
+    res.status(200).json(post);
+  },
 
   /**
    * @api {patch} /api/v1/post/:id Update post
@@ -217,7 +288,7 @@ module.exports = {
       res.status(404).json({ error: "Post Not Found" });
       return;
     }
-    res.status(200).json(updatedPostById);
+    res.status(200).json(post);
   },
 
   /**
@@ -244,7 +315,13 @@ module.exports = {
    * }
    *
    */
-  deleteAllPost: async (req, res) => {},
+  deleteAllPost: async (req, res) => {
+    const post = await Post.remove({}).catch((err) => {
+      console.error(err.message);
+      res.sendStatus(404);
+    });
+    res.status(200).json(post);
+  },
 
   /**
    * @api {delete} /api/v1/post/:user/:id Delete user's post
@@ -294,7 +371,6 @@ module.exports = {
       res.status(404).json({ error: "Post Not Found" });
       return;
     }
-
-
+    res.status(200).json(post);
   },
 };
