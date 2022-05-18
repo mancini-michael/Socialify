@@ -196,7 +196,29 @@ module.exports = {
    * }
    *
    */
-  updatePostById: async (req, res) => {},
+  updatePostById: async (req, res) => {
+
+    const { author, description, picture } = req.body;
+
+    const updatedPost = {
+      author,
+      description,
+      picture,
+    };
+
+    const {id} = req.parms;
+
+    const post = await Post.findOneAndUpdate({_id: id},{$set:{description:updatedPost.description}}).catch((err) => {
+      console.error(err.message);
+      res.sendStatus(500);
+      return;
+    });
+    if (!post) {
+      res.status(404).json({ error: "Post Not Found" });
+      return;
+    }
+    res.status(200).json(updatedPostById);
+  },
 
   /**
    * @api {delete} /api/v1/post/ Delete all post
@@ -251,5 +273,28 @@ module.exports = {
    * }
    *
    */
-  deletePostById: async (req, res) => {},
+  deletePostById: async (req, res) => {
+
+    const { author, description, picture } = req.body;
+
+    const deletedPost = {
+      author,
+      description,
+      picture,
+    };
+
+    const {id} = req.parms;
+
+    const post = await Post.remove({_id: id, author: deletedPost.author}).catch((err) => {
+      console.error(err.message);
+      res.sendStatus(500);
+      return;
+    });
+    if (!post) {
+      res.status(404).json({ error: "Post Not Found" });
+      return;
+    }
+
+
+  },
 };
