@@ -164,7 +164,15 @@ module.exports = {
    * }
    *
    */
-  getUserPost: async (req, res) => {},
+
+  getUserPost: async (req, res) => {
+    const { author, description, picture } = req.body;
+    const post = await Post.find({author: author}).catch((err) => {
+      console.error(err.message);
+      res.sendStatus(404);
+    });
+    res.status(200).json(post);
+  },
 
   /**
    * @api {patch} /api/v1/post/:id Update post
@@ -222,7 +230,14 @@ module.exports = {
    * }
    *
    */
-  deleteAllPost: async (req, res) => {},
+  deleteAllPost: async (req, res) => {
+    const { author, description, picture } = req.body;
+    const post = await Post.remove({}).catch((err) => {
+      console.error(err.message);
+      res.sendStatus(404);
+    });
+    res.status(200).json(post);
+  },
 
   /**
    * @api {delete} /api/v1/post/:user/:id Delete user's post
