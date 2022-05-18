@@ -8,6 +8,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 const passport = require("./config/passport");
+const { ensureUser } = require("./middlewares/auth");
+const homepageRoutes = require("./routes/homepage");
 const oauthRoutes = require("./routes/oauth");
 const apiRoutes = require("./routes/post");
 
@@ -46,10 +48,11 @@ app.use(passport.session());
 
 /* set routes */
 app.use("/api/v1/post", apiRoutes);
+app.use("/homepage", homepageRoutes);
 app.use("/oauth/google", oauthRoutes);
 
 /* get root path */
-app.get("/", (req, res) => {
+app.get("/", ensureUser, (req, res) => {
   res.render("index", { title: "Socialify" });
 });
 
