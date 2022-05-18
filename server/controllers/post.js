@@ -166,8 +166,8 @@ module.exports = {
    */
 
   getUserPost: async (req, res) => {
-    const { author, description, picture } = req.body;
-    const post = await Post.find({author: author}).catch((err) => {
+    const { id } = req.params;
+    const post = await Post.find({ author: id }).catch((err) => {
       console.error(err.message);
       res.sendStatus(404);
     });
