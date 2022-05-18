@@ -1,6 +1,10 @@
 const amqp = require("amqplib/callback_api");
 const dotenv = require("dotenv");
+<<<<<<< HEAD
 const { google } = require("googleapis");
+=======
+const { google } = require("googleapis")
+>>>>>>> 1db7b4f1c5e1865744764f8ac683c6005ee8527e
 
 const Post = require("../models/Post");
 const User = require("../models/User");
@@ -98,11 +102,20 @@ module.exports = {
       });
     });
 
+<<<<<<< HEAD
     // Create a new calender instance.
     const calendar = google.calendar({
       version: "v3",
       access_token: req.session.accessToken,
     });
+=======
+    oAuth2Client = {
+
+    }
+
+    // Create a new calender instance.
+    const calendar = google.calendar({ version: 'v3' })
+>>>>>>> 1db7b4f1c5e1865744764f8ac683c6005ee8527e
 
     // Create a new event start date instance for temp uses in our calendar.
     const eventStartTime = new Date();
@@ -271,7 +284,29 @@ module.exports = {
    * }
    *
    */
-  updatePostById: async (req, res) => {},
+  updatePostById: async (req, res) => {
+
+    const { author, description, picture } = req.body;
+
+    const updatedPost = {
+      author,
+      description,
+      picture,
+    };
+
+    const {id} = req.parms;
+
+    const post = await Post.findOneAndUpdate({_id: id},{$set:{description:updatedPost.description}}).catch((err) => {
+      console.error(err.message);
+      res.sendStatus(500);
+      return;
+    });
+    if (!post) {
+      res.status(404).json({ error: "Post Not Found" });
+      return;
+    }
+    res.status(200).json(post);
+  },
 
   /**
    * @api {delete} /api/v1/post/ Delete all post
@@ -332,5 +367,27 @@ module.exports = {
    * }
    *
    */
-  deletePostById: async (req, res) => {},
+  deletePostById: async (req, res) => {
+
+    const { author, description, picture } = req.body;
+
+    const deletedPost = {
+      author,
+      description,
+      picture,
+    };
+
+    const {id} = req.parms;
+
+    const post = await Post.remove({_id: id, author: deletedPost.author}).catch((err) => {
+      console.error(err.message);
+      res.sendStatus(500);
+      return;
+    });
+    if (!post) {
+      res.status(404).json({ error: "Post Not Found" });
+      return;
+    }
+    res.status(200).json(post);
+  },
 };

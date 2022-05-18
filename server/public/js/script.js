@@ -24,8 +24,7 @@ $(document).ready(() => {
       type: "POST",
       data: post,
       success: (result) => {
-        alert("creato");
-        console.log(result);
+        location.reload();
       },
     });
   });
