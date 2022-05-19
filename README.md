@@ -1,5 +1,9 @@
 # Socialify
 
+# Diagramma del Progetto
+
+![alt text](https://github.com/mancini-michael/Socialify/blob/ddedef92bf784f7214bdb600bb6238f60be0eafd/diagrammaprogettoreti.png)
+
 # Requisiti Progetto
 Socialify è una Web App ideata da Michael Mancini, Lorenzo Gizzi e Simone Mariano che permette di pubblicare post come in un Social Network
 - L'applicativo offre API di terze parti documentate per interagire con i post pubblicati dai vari utenti, in particolare è possibile creare un nuovo post, ottenere tutti quelli presenti, ottenere quelli di uno specifico utente, aggiornare un post, cancellare tutti i post oppure uno specifico di un dato utente.
