@@ -19,7 +19,7 @@ E' necessario avere installato Nodejs e Npm
 # Test
 Per poter testare la Web App è necessario eseguire il comando
 ```javascript
-npm install mocha chai && npm install
+npm install
 ```
 e poi il comando
 ```javascript
