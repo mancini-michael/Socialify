@@ -1,36 +1,47 @@
 # Socialify
 
-# Requisiti Progetto
-Socialify è una Web App ideata da Michael Mancini, Lorenzo Gizzi e Simone Mariano che permette di pubblicare post come in un Social Network
-- L'applicativo offre API di terze parti documentate per interagire con i post pubblicati dai vari utenti, in particolare è possibile creare un nuovo post, ottenere tutti quelli presenti, ottenere quelli di uno specifico utente, aggiornare un post, cancellare tutti i post oppure uno specifico di un dato utente.
-- Si interfaccia con due servizi di terze parti, entrambi di Google che sono google drive per salvare i post e google calendar per pianificarli
-- L'accesso al servizio viene effettuato tramite il servizio OAuth offerto da Google
+Socialify è il progetto pratico per il corso di Reti di Calcolatori ideato e sviluppato da:
 
-# Installazione ed Esecuzione
-## Prerequisiti
-- [Nodejs](https://nodejs.org)
-- Npm
-#
-Per verificare la corretta installazione eseguire:
-```javascript
-node -v
-npm -v
+- Michael Mancini, 1884654
+- Lorenzo Gizzi, 1907374
+- Simone Mariano
+
+Effettuando l'accesso con il proprio account Google, la Web Application offre un servizio di Social Network, dove ogni utente può pubblicare post testuali e con immagini allegate. Inoltre, sono rese disponibili delle API documentate [qui]().
+
+# Prerequisiti
+
+- [docker](https://www.docker.com/)
+- [node.js](https://nodejs.org)
+- [npm](https://www.npmjs.com/)
+
+# Installazione
+
+- Clonare la repository tramite il comando:
+
 ```
-- Clonare la repository tramite il comando git clone
-- All'interno della cartella server eseguire il comando npm install 
-- Eseguire il comando docker-compose up per avviare la Web App
-- Da browser visitare localhost
-- L'utente può registrarsi o loggarsi sia tramite email che tramite Google
-- Una volta loggato l'utente può pubblicare un post tramite la compilazione di campi presenti nella homepage
-- Premuto sul bottone pubblica, il post viene aggiunto come evento sul google calendar e sul google drive
+git clone https://github.com/mancini-michael/Socialify.git
+```
 
-# Test
-Per poter testare la Web App è necessario eseguire il comando
-```javascript
+- Spostarsi nella directory server ed installare i moduli di node :
+
+```
+cd Socialify/server
 npm install
 ```
-e poi il comando
-```javascript
+
+- Eseguire il build delle immagini e avviare il compose:
+
+```
+docker compose build
+docker compose up
+```
+
+- Da Web Browser visitare http://localhost:8080/ oppure https://localhost:443/
+
+# Test
+
+- Eseguire i test digitando:
+
+```
 npm test
 ```
-per eseguirli
