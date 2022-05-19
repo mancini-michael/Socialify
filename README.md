@@ -17,8 +17,12 @@ E' necessario avere installato Nodejs e Npm
 - Premuto sul bottone pubblica, il post viene aggiunto come evento sul google calendar e sul google drive
 
 # Test
-Per poter testare la Web App è necessario eseguire il comando\n
-npm install mocha chai && npm install\n
-e poi il comando\n
-npm test\n
+Per poter testare la Web App è necessario eseguire il comando
+```javascript
+npm install mocha chai && npm install
+```
+e poi il comando
+```javascript
+npm test
+```
 per eseguirli
