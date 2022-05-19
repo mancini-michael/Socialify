@@ -7,7 +7,15 @@ Socialify è una Web App ideata da Michael Mancini, Lorenzo Gizzi e Simone Maria
 - L'accesso al servizio viene effettuato tramite il servizio OAuth offerto da Google
 
 # Installazione ed Esecuzione
-E' necessario avere installato Nodejs e Npm
+## Prerequisiti
+- [Nodejs](https://nodejs.org)
+- Npm
+#
+Per verificare la corretta installazione eseguire:
+```javascript
+node -v
+npm -v
+```
 - Clonare la repository tramite il comando git clone
 - All'interno della cartella server eseguire il comando npm install 
 - Eseguire il comando docker-compose up per avviare la Web App
