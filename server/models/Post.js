@@ -9,6 +9,7 @@ const schema = new mongoose.Schema(
     displayName: {
       type: String,
       required: true,
+      trim: true,
     },
     description: {
       type: String,
