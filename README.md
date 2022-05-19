@@ -1,5 +1,7 @@
 # Socialify
 
+![alt text](https://github.com/mancini-michael/Socialify/blob/ddedef92bf784f7214bdb600bb6238f60be0eafd/diagrammaprogettoreti.png)
+
 Socialify è il progetto pratico per il corso di Reti di Calcolatori ideato e sviluppato da:
 
 - Michael Mancini, 1884654
