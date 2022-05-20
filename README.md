@@ -6,7 +6,7 @@ Socialify è il progetto pratico per il corso di Reti di Calcolatori ideato e sv
 
 - Michael Mancini, 1884654
 - Lorenzo Gizzi, 1907374
-- Simone Mariano
+- Simone Mariano, 1883519
 
 Effettuando l'accesso con il proprio account Google, la Web Application offre un servizio di Social Network, dove ogni utente può pubblicare post testuali e con immagini allegate. Inoltre, sono rese disponibili delle API documentate [qui]().
 
