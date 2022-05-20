@@ -2,7 +2,12 @@ const passport = require("../config/passport");
 
 module.exports = {
   login: passport.authenticate("google", {
-    scope: ["email", "profile", "https://www.googleapis.com/auth/calendar"],
+    scope: [
+      "email",
+      "profile",
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/drive",
+    ],
   }),
   callback: passport.authenticate("google", {
     successRedirect: "/homepage",

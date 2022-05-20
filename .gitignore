@@ -1,5 +1,6 @@
 # directories
 server/node_modules
+server/public/uploads
 
 # files
 server/config/.env

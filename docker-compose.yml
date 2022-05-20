@@ -25,6 +25,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./server:/usr/src/app
+      - ./server/public/uploads:/usr/src/app/public/uploads
       - /usr/src/app/node_modules
     environment:
       - INSTANCE=node1
@@ -39,6 +40,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./server:/usr/src/app
+      - ./server/public/uploads:/usr/src/app/public/uploads
       - /usr/src/app/node_modules
     environment:
       - INSTANCE=node2
@@ -53,6 +55,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./server:/usr/src/app
+      - ./server/public/uploads:/usr/src/app/public/uploads
       - /usr/src/app/node_modules
     environment:
       - INSTANCE=node3

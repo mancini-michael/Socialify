@@ -8,10 +8,15 @@ const {
   updatePostById,
   deletePostById,
 } = require("../controllers/post");
+const upload = require("../middlewares/multer");
 
 const router = express();
 
-router.route("/").post(createPost).get(getAllPost).delete(deleteAllPost);
+router
+  .route("/")
+  .post(upload.single("photo"), createPost)
+  .get(getAllPost)
+  .delete(deleteAllPost);
 router
   .route("/:id")
   .get(getUserPost)

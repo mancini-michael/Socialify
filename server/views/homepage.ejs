@@ -25,7 +25,7 @@
         </div>
         <div class="col-lg-8 m-md-0 mt-3">
           <div class="container-md mt-md-5">
-            <form id="post">
+            <form id="post" enctype="multipart/form-data">
               <input
                 type="hidden"
                 name="author"
@@ -65,8 +65,13 @@
             <% post.forEach((p) => { %>
             <div class="col-lg-3 m-auto p-2">
               <div class="container-md shadow p-3 mb-2">
-                <h5 class="fw-bolder m-0"><%- p.displayName %></h5>
-                <span class="text-break"><%- p.description %></span>
+                <div class="d-flex flex-column text-start">
+                  <h5 class="fw-bolder m-0"><%- p.displayName %></h5>
+                  <span class="text-break"><%- p.description %></span>
+                  <% if (p.photo) {%>
+                  <img src="uploads/<%- p.photo %>" class="img-fluid mt-2" />
+                  <% } %>
+                </div>
               </div>
             </div>
             <% }); %>

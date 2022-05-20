@@ -38,14 +38,20 @@ module.exports = {
    *
    */
   createPost: async (req, res) => {
-    const { author, displayName, description, picture } = req.body;
+    const { author, displayName, description } = req.body;
 
     const createdPost = {
       author,
       displayName,
       description,
-      picture,
     };
+
+    if (req.file) {
+      const photo = req.file.filename;
+      createdPost.photo = photo;
+    }
+
+    console.log(createdPost);
 
     const user = await User.findOne({ _id: author }).catch((err) => {
       console.error(err.message);

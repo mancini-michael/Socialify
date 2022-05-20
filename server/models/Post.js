@@ -16,7 +16,7 @@ const schema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    picture: {
+    photo: {
       type: String,
     },
   },
