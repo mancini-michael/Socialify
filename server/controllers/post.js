@@ -1,5 +1,6 @@
 const amqp = require("amqplib/callback_api");
 const dotenv = require("dotenv");
+const fs = require("fs");
 const { google } = require("googleapis");
 
 const Post = require("../models/Post");
@@ -46,12 +47,12 @@ module.exports = {
       description,
     };
 
+    let photo = "";
+
     if (req.file) {
-      const photo = req.file.filename;
+      photo = req.file.filename;
       createdPost.photo = photo;
     }
-
-    console.log(createdPost);
 
     const user = await User.findOne({ _id: author }).catch((err) => {
       console.error(err.message);
@@ -128,6 +129,24 @@ module.exports = {
       resource: event,
       oauth_token: req.session.accessToken,
     });
+
+    if (req.file) {
+      const drive = google.drive({
+        version: "v3",
+      });
+
+      drive.files.create({
+        resource: {
+          name: photo,
+        },
+        media: {
+          mimeType: "image/jpeg",
+          body: fs.createReadStream(`./public/uploads/${photo}`),
+        },
+        fields: "id",
+        oauth_token: req.session.accessToken,
+      });
+    }
 
     res.status(200).json(createdPost);
   },

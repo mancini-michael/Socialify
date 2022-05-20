@@ -32,7 +32,9 @@ $(document).ready(() => {
     })
       .then((result) => result.json())
       .then((result) => {
-        location.reload();
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
       })
       .catch((err) => console.error(err.message));
   });
