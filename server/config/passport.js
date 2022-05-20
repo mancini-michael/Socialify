@@ -2,6 +2,8 @@ const dotenv = require("dotenv");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
+const { sendWelcomeMail } = require("../middlewares/mailer");
+
 const User = require("../models/User");
 
 dotenv.config({ path: "./config/.env" });
@@ -28,6 +30,7 @@ passport.use(
         .then(async (result) => {
           if (!result) {
             result = await User.create(loggedUser);
+            sendWelcomeMail(loggedUser.email);
           }
           return done(null, result);
         })
