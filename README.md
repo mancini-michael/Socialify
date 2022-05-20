@@ -16,6 +16,14 @@ Effettuando l'accesso con il proprio account Google, la Web Application offre un
 - [node.js](https://nodejs.org)
 - [npm](https://www.npmjs.com/)
 
+# Requisiti progetto
+
+- Fornisce delle API documentate per interagire con i post degli utenti, in particolare è possibile creare un nuovo post, ottenere tutti i post e cancellarli e di uno specifico utente è possibile cancellare, aggiornare o ottenere un nuovo post
+- Si interfaccia con due servizi REST esterni che sono Google Calendar per salvare come evento la pubblicazione di un post e Google Drive per salvare il contenuto di quest'ultimo
+- E' possibile effettuare l'accesso utilizzando il servizio OAuth offerto da Google
+- L'applicazione fa uso di Docker per la containerizzazione delle varie parti della Web App e Docker Compose per orchestrarle.
+- E' presente una procedura di CI/CD attraverso Github Actions
+
 # Installazione
 
 - Clonare la repository tramite il comando:
