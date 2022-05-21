@@ -56,6 +56,9 @@ app.get("/", ensureUser, (req, res) => {
   res.render("index", { title: "Socialify" });
 });
 
+/* get API docs */
+app.use("/api-docs", express.static(path.join(__dirname, "/public/docs")));
+
 /* set connection with mongo */
 mongoose
   .connect(MONGO_URI)
