@@ -8,7 +8,7 @@ Socialify è il progetto pratico per il corso di Reti di Calcolatori ideato e sv
 - Lorenzo Gizzi, 1907374
 - Simone Mariano, 1883519
 
-Effettuando l'accesso con il proprio account Google, la Web Application offre un servizio di Social Network, dove ogni utente può pubblicare post testuali e con immagini allegate. Inoltre, sono rese disponibili delle API documentate [qui]().
+Effettuando l'accesso con il proprio account Google, la Web Application offre un servizio di Social Network, dove ogni utente può pubblicare post testuali e con immagini allegate. Inoltre, sono rese disponibili delle API documentate [qui](https://github.com/mancini-michael/Socialify/blob/900b719765c57be6460d346d0f6ad8ab13e7399d/server/public/docs/index.html).
 
 # Prerequisiti
 
