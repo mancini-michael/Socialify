@@ -16,6 +16,27 @@ Effettuando l'accesso con il proprio account Google, la Web Application offre un
 - [node.js](https://nodejs.org)
 - [npm](https://www.npmjs.com/)
 
+# Configurazione 
+
+E' necessario accedere al [Google Cloud Console](https://console.cloud.google.com/apis/) e nella sezione credenziali bisogna creare delle nuove creadenziali per l'Oauth con Google cliccando su "ID client OAuth". Scegliere come tipo di applicazione "Applicazione web" e aggiungere come Redirect URI "http://localhost:8080/oauth/google/callback". Una volta create le credenziali è necessario aggiungere nella cartella config un file ".env" con i seguenti campi:
+
+```
+CLIENT_ID= Il tuo client ID creato in precedenza
+CLIENT_SECRET= Il tuo client secret creato in precedenza
+REDIRECT_URI= http://localhost:8080/oauth/google/callback
+
+EMAIL_USER= L'indirizzo email (gmail) con il quale si vogliono inviare le mail di conferma di registrazione 
+EMAIL_SECRET= La password della mail sopra scritta
+
+SECRET= secret_token
+
+MONGO_URI= mongodb://mongo:27017/
+PORT= 3000
+
+QUEUE= queue
+```
+
+
 # Requisiti progetto
 
 - Fornisce delle API documentate per interagire con i post degli utenti, in particolare è possibile creare un nuovo post, ottenere tutti i post e cancellarli e di uno specifico utente è possibile cancellare, aggiornare o ottenere un nuovo post
