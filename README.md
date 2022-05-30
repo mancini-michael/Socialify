@@ -18,7 +18,7 @@ Effettuando l'accesso con il proprio account Google, la Web Application offre un
 
 # Configurazione 
 
-E' necessario accedere al [Google Cloud Console](https://console.cloud.google.com/apis/) e nella sezione credenziali bisogna creare delle nuove creadenziali per l'Oauth con Google cliccando su "ID client OAuth". Scegliere come tipo di applicazione "Applicazione web" e aggiungere come Redirect URI "http://localhost:8080/oauth/google/callback". Una volta create le credenziali è necessario aggiungere nella cartella config un file ".env" con i seguenti campi:
+E' necessario accedere al [Google Cloud Console](https://console.cloud.google.com/apis/) e nella sezione credenziali bisogna creare delle nuove credenziali per l'Oauth con Google cliccando su "ID client OAuth". Scegliere come tipo di applicazione "Applicazione Web" e aggiungere come redirect URI "http://localhost:8080/oauth/google/callback". Una volta create le credenziali è necessario aggiungere nella cartella config un file .env con i seguenti campi:
 
 ```
 CLIENT_ID= Il tuo client ID creato in precedenza
