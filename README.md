@@ -71,7 +71,7 @@ docker compose up
 
 # Test
 
-- Eseguire i test nella cartella server digitando:
+- Eseguire i test nella cartella "server" digitando:
 
 ```
 npm test
