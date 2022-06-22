@@ -67,7 +67,7 @@ docker compose build
 docker compose up
 ```
 
-- Da Web Browser visitare http://localhost:8080/ oppure https://localhost:443/;
+- Da Web Browser visitare http://localhost:8080/ oppure https://localhost:443/
 
 # Test
 
